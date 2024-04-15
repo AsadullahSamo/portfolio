@@ -1,0 +1,337 @@
+@font-face {
+    font-family: poppins;
+    src: url('fonts/Poppins/Poppins-Medium.ttf');
+}
+@font-face {
+    font-family: raleway;
+    src: url('fonts/Raleway/static/Raleway-Medium.ttf');
+}
+@font-face {
+    font-family: poppins-light;
+    src: url('fonts/Poppins/Poppins-ThinItalic.ttf');
+}
+*{
+    scroll-behavior: smooth;
+}
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #303841;
+}
+header{
+    width: 100%;
+    height: 110vh;
+    background-color: #343639;
+    margin-top: -120px;
+    box-sizing: border-box;
+}
+header nav{
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    width: 100%;
+    height: 62px;
+    background-color: #be3144;
+}
+nav ul{
+    display: flex;
+    justify-content: flex-end;
+    list-style-type: none;
+}
+nav ul li:hover{
+    background-color: rgb(109, 109, 179);
+}
+nav ul li{
+    margin-top: -20px;
+    font-family: poppins;
+    font-size: 22px;
+    padding: 20px 35px 21px 10px;
+}
+a{
+    text-decoration: none;
+    color: #ede3e5;
+}
+header h1, main section#contact h1{
+    color: white;
+    font-family: Raleway;
+    text-align: center;
+    margin-top: 30vh;
+    font-size: 60px;
+    position: relative;
+    top: 170px;
+}
+header h2, main section#contact h2{
+    text-align: center;
+    margin-top: -50px;
+    color: #b02e32;
+    font-size: 28px;
+    font-family: poppins-light;
+    position: relative;
+    top: 175px;
+}
+main{
+    background-color: #45567d;
+    width: 100%;
+    height: 200vh;
+    margin-top: -3%;
+}
+main #heading2{
+    text-align: center;
+    font-size: 40px;
+    position: relative;
+    color: #f0f0f0;   
+    top: 15vh;
+    font-family: raleway;
+}
+main div#divider{
+    width: 45%;
+    height: 0.3vh;
+    background-color: white;
+    border-radius: 10%;
+    position: relative;
+    top: 6.5%;
+    left: 27.5%;
+}
+section.project{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    gap: 40px;
+}
+main section div.projects{
+    margin: auto;
+    width: 28%;
+    height: 65vh;
+    border: 2px solid #303841;
+}
+div.projects h3.base-title, h3.base-title2, h3.top-base-title, h3.base-title3, h3.base-title4{
+    width: 100%;
+    height: 7.5vh;
+    background-color: #303841;
+    position: relative;
+    bottom: 35px;
+}
+div.projects h3.text{
+    color: white;
+    font-size: 25px;
+    font-family: poppins;
+    text-align: center;
+    padding-top: 0px;
+}
+img{
+    position: relative;
+    width: 100%;
+}
+img[src="img/Project Images/4.png"], img[src="img/Project Images/5.png"]{
+    position: relative;
+    width: 100%;
+    top: -50px;
+}
+img[src="img/Project Images/5.png"]{
+    top: -50px;
+}
+h3.top-base-title{
+    background-color: #303841;
+    top: -25px;
+}
+h3.base-title2{
+    bottom: 82px;
+}
+h3.base-title3{
+    bottom: 95px;
+    height: 6.5vh;
+}
+h3.base-title4{
+    bottom: 53px;
+}
+.code{
+    color: #ff7f50;
+    visibility: hidden;
+}
+main section div.projects:hover .code{
+    cursor: pointer;
+    visibility: visible;
+    transition: visibility 6s ease-out;
+}
+main button{
+    width: 150px;
+    height: 40px;
+    position: relative;
+    left: 590px;
+    top: 50px;
+    color: white;
+    font-size: 20px;
+    background-color: #303841;
+    border: 2px solid #303841;
+    font-family: poppins;
+}
+main button:hover{
+    background-color: #be3144;
+    border: 1px solid #be3144;
+    cursor: pointer;
+    transition: background-color 1s, border 1s;
+}
+
+main section#contact{
+    width: 100%;
+    height: 100vh;
+    background-color: #303841;
+    margin-top: -40px;
+}
+main section#contact h1{
+    position: relative;
+    top: 200px;
+}
+
+main section#contact h2{
+    color: white;
+    position: relative;
+    top: 200px;
+    font-size: 17px;
+}
+
+main section ul li.fa-facebook-square, li.fa-github, li.fa-at, li.fa-linkedin{
+    color: white;
+    position: relative;
+    top: -270px;
+    /* margin: auto; */
+    font-size: 30px;
+    margin-right: 50px;
+}
+
+main section ul li a{
+    font-family: poppins;
+    font-size: 25px;
+}
+hr{
+    position: relative;
+    top: 550px;
+    border: 2px solid #be3144;
+}
+footer p{
+    text-align: center;
+    color: whitesmoke;
+    position: relative;
+    top: 560px;
+    font-size: 22px;
+    font-family: poppins;
+}
+
+@media screen and (max-width: 900px){
+        section.project{
+            flex-direction: column;   
+            gap: 30px;
+        }
+        main section div.projects{
+            width: 63%;
+            height: 65vh;
+        }
+        main{
+            height: 550vh;
+        }
+        hr{ 
+            top: 130px;
+        }
+        main section#contact h1{
+            font-size: 40px;
+        }
+        footer p{
+            top: 150px;         
+        }
+        main section ul li.fa-facebook-square{
+            left: 70px;
+            margin-right: -100px;
+        }
+        li.fa-at{
+            top: -190px;
+            left: 100px;
+        }
+        li.fa-mobile{
+            top: -220px;
+            left: 70px;
+        }
+}
+
+.article {
+    margin-top: -5px;
+    max-width: 20rem;
+    border-radius: 0.25rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    border: 1px solid white;
+}
+
+.bg-gray {
+    background-color: #EDF0F8;
+}
+
+.break-words {
+    word-wrap: break-word;
+}
+
+.font-medium {
+    font-weight: 500;
+}
+
+.loading-text {
+    padding: 1rem;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.py-4 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+.text-xl {
+    font-size: 1.25rem;
+}
+
+.mb-2 {
+    margin-bottom: 0.5rem;
+}
+
+.text-base {
+    font-size: 1rem;
+}
+
+.text-gray-700 {
+    color: #4a5568;
+}
+
+.flex {
+    display: flex;
+}
+
+.gap-2 {
+    gap: 0.5rem;
+}
+
+.mx-5 {
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;
+}
+
+.my-2 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.object-fit-cover {
+    object-fit: cover;
+}
