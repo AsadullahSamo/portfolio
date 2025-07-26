@@ -7,6 +7,9 @@ import { ScrollProgress } from './components/ScrollProgress';
 import { Navigation } from './components/Navigation';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
+import Stats from './components/Stats';
+import Timeline from './components/Timeline';
+import Services from './components/Services';
 import { Projects } from './components/Projects';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
@@ -34,6 +37,9 @@ function App() {
                   <Hero />
                 </section>
                 <About />
+                <Stats />
+                <Timeline />
+                <Services />
                 <Projects />
                 <Contact />
               </main>
