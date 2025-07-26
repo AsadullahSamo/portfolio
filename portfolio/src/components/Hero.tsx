@@ -5,17 +5,17 @@ import { Button } from './ui/button'
 const socialLinks = [
   {
     name: 'GitHub',
-    href: 'https://github.com/yourusername',
+    href: 'https://github.com/AsadullahSamo',
     icon: Github,
   },
   {
     name: 'LinkedIn',
-    href: 'https://linkedin.com/in/yourusername',
+    href: 'https://www.linkedin.com/in/asadullah-samo-212680266/',
     icon: Linkedin,
   },
   {
     name: 'Email',
-    href: 'mailto:your.email@example.com',
+    href: 'mailto:asad.samo549@gmail.com',
     icon: Mail,
   },
 ]
