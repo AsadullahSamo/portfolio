@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion'
-import { ArrowLeft, ExternalLink, Github, Play, Calendar, Users, Code, Zap, Award, CheckCircle } from 'lucide-react'
+import { ArrowLeft, ExternalLink, Github, Play, Calendar, Users, Code, Zap, Award, CheckCircle, X } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
 import { Badge } from './ui/badge'
 import { Button } from './ui/button'
+import { useEffect } from 'react'
 
 interface ProjectDetailProps {
   project: {
@@ -25,6 +26,24 @@ interface ProjectDetailProps {
 }
 
 export function ProjectDetail({ project, onBack }: ProjectDetailProps) {
+  // Handle ESC key and prevent body scroll
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onBack()
+      }
+    }
+
+    // Prevent body scroll
+    document.body.style.overflow = 'hidden'
+    document.addEventListener('keydown', handleEscape)
+
+    return () => {
+      document.body.style.overflow = 'unset'
+      document.removeEventListener('keydown', handleEscape)
+    }
+  }, [onBack])
+
   const getProjectDetails = (title: string) => {
     switch (title) {
       case 'NutriVerseAI':
@@ -174,7 +193,20 @@ export function ProjectDetail({ project, onBack }: ProjectDetailProps) {
   const details = getProjectDetails(project.title)
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="fixed inset-0 z-50 bg-background overflow-y-auto">
+      {/* Close Button - Fixed Position */}
+      <motion.button
+        onClick={onBack}
+        className="fixed top-4 right-4 z-60 p-2 bg-background/80 backdrop-blur-sm border border-border rounded-full hover:bg-muted transition-colors"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.3 }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+      >
+        <X className="h-5 w-5" />
+      </motion.button>
+
       <div className="container mx-auto px-4 py-8">
         {/* Back Button */}
         <motion.div
@@ -374,6 +406,120 @@ export function ProjectDetail({ project, onBack }: ProjectDetailProps) {
             </Card>
           </motion.div>
         )}
+
+        {/* Challenges & Solutions */}
+        {details.challenges.length > 0 && details.solutions.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+            className="mb-12"
+          >
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* Challenges */}
+              <Card className="border-red-200 dark:border-red-800">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2 text-red-600 dark:text-red-400">
+                    <Zap className="h-5 w-5" />
+                    Technical Challenges
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3">
+                    {details.challenges.map((challenge, index) => (
+                      <div key={index} className="flex items-start gap-3">
+                        <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0" />
+                        <span className="text-sm">{challenge}</span>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Solutions */}
+              <Card className="border-green-200 dark:border-green-800">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2 text-green-600 dark:text-green-400">
+                    <CheckCircle className="h-5 w-5" />
+                    Solutions Implemented
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3">
+                    {details.solutions.map((solution, index) => (
+                      <div key={index} className="flex items-start gap-3">
+                        <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                        <span className="text-sm">{solution}</span>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </motion.div>
+        )}
+
+        {/* Architecture & Technical Details */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="mb-12"
+        >
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Code className="h-5 w-5 text-primary" />
+                Technical Architecture
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <Code className="h-8 w-8 text-blue-600 dark:text-blue-400" />
+                  </div>
+                  <h4 className="font-semibold mb-2">Frontend</h4>
+                  <div className="flex flex-wrap gap-1 justify-center">
+                    {project.technologies.filter(tech =>
+                      ['React', 'TypeScript', 'Flutter', 'Tailwind CSS', 'Angular', 'Next.js'].includes(tech)
+                    ).map(tech => (
+                      <Badge key={tech} variant="outline" className="text-xs">{tech}</Badge>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <Zap className="h-8 w-8 text-green-600 dark:text-green-400" />
+                  </div>
+                  <h4 className="font-semibold mb-2">Backend</h4>
+                  <div className="flex flex-wrap gap-1 justify-center">
+                    {project.technologies.filter(tech =>
+                      ['Node.js', 'PostgreSQL', 'AWS', 'Socket.io', 'Python', 'JWT', 'Stripe'].includes(tech)
+                    ).map(tech => (
+                      <Badge key={tech} variant="outline" className="text-xs">{tech}</Badge>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <Award className="h-8 w-8 text-purple-600 dark:text-purple-400" />
+                  </div>
+                  <h4 className="font-semibold mb-2">AI & Services</h4>
+                  <div className="flex flex-wrap gap-1 justify-center">
+                    {project.technologies.filter(tech =>
+                      ['OpenAI', 'Gemini API', 'Whisper API', 'Google Vision API', 'Machine Learning', 'AI Algorithms'].includes(tech)
+                    ).map(tech => (
+                      <Badge key={tech} variant="outline" className="text-xs">{tech}</Badge>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
       </div>
     </div>
   )
