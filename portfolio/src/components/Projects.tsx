@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion'
-import { ExternalLink, Github, Play, Filter } from 'lucide-react'
+import { ExternalLink, Github, Play, Filter, Eye } from 'lucide-react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card'
 import { Badge } from './ui/badge'
 import { Button } from './ui/button'
 import { useState } from 'react'
+import { ProjectDetail } from './ProjectDetail'
 
 const projects = [
   {
@@ -54,10 +55,16 @@ const filterCategories = ['All', 'AI-Powered', 'Enterprise', 'Full-Stack', 'Mobi
 
 export function Projects() {
   const [activeFilter, setActiveFilter] = useState('All')
+  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null)
 
   const filteredProjects = activeFilter === 'All'
     ? projects
     : projects.filter(project => project.categories.includes(activeFilter))
+
+  // If a project is selected, show the detail view
+  if (selectedProject) {
+    return <ProjectDetail project={selectedProject} onBack={() => setSelectedProject(null)} />
+  }
 
   return (
     <section id="projects" className="py-20">
@@ -148,13 +155,24 @@ export function Projects() {
                   </CardHeader>
                   
                   <CardContent>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2 mb-4">
                       {project.technologies.map((tech) => (
                         <Badge key={tech} variant="secondary" className="text-xs">
                           {tech}
                         </Badge>
                       ))}
                     </div>
+
+                    {/* View Details Button */}
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="w-full"
+                      onClick={() => setSelectedProject(project)}
+                    >
+                      <Eye className="h-4 w-4 mr-2" />
+                      View Details
+                    </Button>
                   </CardContent>
                 </Card>
               </motion.div>

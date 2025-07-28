@@ -22,7 +22,7 @@ function App() {
   };
 
   return (
-    <ThemeProvider defaultTheme="system" storageKey="portfolio-theme">
+    <ThemeProvider defaultTheme="light" storageKey="portfolio-theme">
       <div className="min-h-screen bg-background text-foreground">
         <AnimatePresence mode="wait">
           {isLoading ? (

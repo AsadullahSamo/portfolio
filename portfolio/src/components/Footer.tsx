@@ -42,7 +42,7 @@ export function Footer() {
               Asadullah Samoon
             </h3>
             <p className="text-muted-foreground text-sm">
-              Full Stack Developer & AI Integration Specialist from Karachi, Pakistan.
+              Full Stack Developer specializing in AI-Enhanced Applications from Karachi, Pakistan.
             </p>
           </motion.div>
 

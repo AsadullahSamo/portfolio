@@ -100,7 +100,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
         >
-          Full Stack Developer & AI Integration Specialist
+          Full Stack Developer specializing in AI-Enhanced Applications
         </motion.h2>
 
         {/* Description */}
