@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Menu, X, Home, User, Code, Briefcase, Mail } from 'lucide-react'
+import { Menu, X, Home, User, Briefcase, Mail } from 'lucide-react'
 import { Button } from './ui/button'
 import { ThemeToggle } from './ThemeToggle'
 import { cn } from '../lib/utils'
@@ -8,7 +8,6 @@ import { cn } from '../lib/utils'
 const navigationItems = [
   { name: 'Home', href: '#home', icon: Home },
   { name: 'About', href: '#about', icon: User },
-  { name: 'Skills', href: '#skills', icon: Code },
   { name: 'Projects', href: '#projects', icon: Briefcase },
   { name: 'Contact', href: '#contact', icon: Mail },
 ]

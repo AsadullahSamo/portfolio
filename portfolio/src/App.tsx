@@ -7,12 +7,12 @@ import { ScrollProgress } from './components/ScrollProgress';
 import { Navigation } from './components/Navigation';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
-import { Skills } from './components/Skills';
+import Stats from './components/Stats';
+import Timeline from './components/Timeline';
+import Services from './components/Services';
 import { Projects } from './components/Projects';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
-import { SEOHead } from './components/SEOHead';
-import { ErrorBoundary } from './components/ErrorBoundary';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -22,40 +22,33 @@ function App() {
   };
 
   return (
-    <ErrorBoundary>
-      <ThemeProvider defaultTheme="system" storageKey="portfolio-theme">
-        <SEOHead />
-        <div className="min-h-screen bg-background text-foreground">
-          <AnimatePresence mode="wait">
-            {isLoading ? (
-              <LoadingScreen key="loading" onComplete={handleLoadingComplete} />
-            ) : (
-              <div key="main">
-                {/* Skip to main content for accessibility */}
-                <a href="#main-content" className="skip-to-main">
-                  Skip to main content
-                </a>
-                {/* <CustomCursor /> */}
-                <ScrollProgress />
-                <Navigation />
-                <main id="main-content">
-                  <section id="home">
-                    <Hero />
-                  </section>
-                  <About />
-                  <section id="skills">
-                    <Skills />
-                  </section>
-                  <Projects />
-                  <Contact />
-                </main>
-                <Footer />
-              </div>
-            )}
-          </AnimatePresence>
-        </div>
-      </ThemeProvider>
-    </ErrorBoundary>
+    <ThemeProvider defaultTheme="system" storageKey="portfolio-theme">
+      <div className="min-h-screen bg-background text-foreground">
+        <AnimatePresence mode="wait">
+          {isLoading ? (
+            <LoadingScreen key="loading" onComplete={handleLoadingComplete} />
+          ) : (
+            <div key="main">
+              {/* <CustomCursor /> */}
+              <ScrollProgress />
+              <Navigation />
+              <main>
+                <section id="home">
+                  <Hero />
+                </section>
+                <About />
+                <Stats />
+                <Timeline />
+                <Services />
+                <Projects />
+                <Contact />
+              </main>
+              <Footer />
+            </div>
+          )}
+        </AnimatePresence>
+      </div>
+    </ThemeProvider>
   );
 }
 

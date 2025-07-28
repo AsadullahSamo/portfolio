@@ -1,24 +1,8 @@
-import { ArrowDown, Download, Github, Linkedin, Mail } from 'lucide-react'
+import { ArrowDown, Download, Mail } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { Button } from './ui/button'
 
-const socialLinks = [
-  {
-    name: 'GitHub',
-    href: 'https://github.com/AsadullahSamo',
-    icon: Github,
-  },
-  {
-    name: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/asadullah-samo-212680266/',
-    icon: Linkedin,
-  },
-  {
-    name: 'Email',
-    href: 'mailto:asad.samo549@gmail.com',
-    icon: Mail,
-  },
-]
+
 
 export function Hero() {
   const scrollToSection = (sectionId: string) => {
@@ -64,6 +48,27 @@ export function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
+        {/* Profile Image */}
+        <motion.div
+          className="mb-8"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.1, duration: 0.8 }}
+        >
+          <div className="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-primary/30 shadow-2xl">
+            <img
+              src="/profile.jpeg"
+              alt="Asadullah Samoon"
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                // Fallback to a placeholder if image doesn't exist
+                const target = e.target as HTMLImageElement;
+                target.src = `https://ui-avatars.com/api/?name=Asadullah+Samoon&size=128&background=3b82f6&color=ffffff&bold=true`;
+              }}
+            />
+          </div>
+        </motion.div>
+
         {/* Greeting */}
         <motion.div
           className="mb-6"
@@ -84,7 +89,7 @@ export function Hero() {
           transition={{ delay: 0.4 }}
         >
           <span className="bg-gradient-to-r from-foreground via-primary to-purple-600 bg-clip-text text-transparent">
-            Your Name
+            Asadullah Samoon
           </span>
         </motion.h1>
 
@@ -95,7 +100,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
         >
-          Full Stack Developer
+          Full Stack Developer & AI Integration Specialist
         </motion.h2>
 
         {/* Description */}
@@ -105,8 +110,8 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8 }}
         >
-          I craft exceptional digital experiences through clean code, innovative solutions,
-          and user-centered design. Passionate about building scalable applications that make a difference.
+          Passionate software engineer from Karachi, Pakistan, with 4 years of experience building enterprise-grade applications.
+          I specialize in AI-powered solutions, real-time systems, and scalable full-stack architectures that serve thousands of users worldwide.
         </motion.p>
 
         {/* CTA Buttons */}
@@ -124,42 +129,25 @@ export function Hero() {
             Get In Touch
             <Mail className="ml-2 h-4 w-4" />
           </Button>
-          <Button variant="secondary" size="lg" asChild>
-            <a href="/resume.pdf" download="Your_Name_Resume.pdf">
+          <Button
+            variant="secondary"
+            size="lg"
+            className="group"
+            asChild
+          >
+            <a
+              href="/resume.pdf"
+              download="Asadullah_Samoon_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Download className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />
               Download Resume
-              <Download className="ml-2 h-4 w-4" />
             </a>
           </Button>
         </motion.div>
 
-        {/* Social Links */}
-        <motion.div
-          className="flex justify-center space-x-6 mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2 }}
-        >
-          {socialLinks.map((social, index) => {
-            const Icon = social.icon
-            return (
-              <motion.a
-                key={social.name}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 rounded-full bg-muted hover:bg-accent transition-colors"
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.4 + index * 0.1 }}
-                aria-label={social.name}
-              >
-                <Icon className="h-6 w-6" />
-              </motion.a>
-            )
-          })}
-        </motion.div>
+
 
         {/* Scroll Indicator */}
         <motion.div
