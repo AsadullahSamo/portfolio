@@ -1,6 +1,4 @@
-import { Code, Palette, Zap, Users, Award, Coffee } from 'lucide-react'
 import { motion } from 'framer-motion'
-import { Card, CardContent } from './ui/card'
 import { useState, useEffect } from 'react'
 
 const skillsWithProficiency = {
@@ -76,38 +74,7 @@ const SkillBar = ({ name, level, description, delay = 0 }: SkillBarProps) => {
   )
 }
 
-const highlights = [
-  {
-    icon: Code,
-    title: '4 Years Experience',
-    description: 'Building enterprise-grade applications with AI integration and real-time features.'
-  },
-  {
-    icon: Users,
-    title: '10K+ Active Users',
-    description: 'Developed UnifyChat serving over 10,000 real users with enterprise-level features.'
-  },
-  {
-    icon: Zap,
-    title: 'AI Integration Expert',
-    description: 'Specialized in integrating OpenAI, Gemini, Whisper, and custom AI solutions.'
-  },
-  {
-    icon: Palette,
-    title: 'Full-Stack Mastery',
-    description: 'Expert in React, Node.js, Flutter, PostgreSQL, AWS, and modern development stack.'
-  },
-  {
-    icon: Award,
-    title: 'Production Ready',
-    description: 'Delivered complex projects like NutriVerseAI and automated timetable systems.'
-  },
-  {
-    icon: Coffee,
-    title: 'Gaming Enthusiast',
-    description: 'Passionate gamer who loves challenges and continuously learns new technologies.'
-  }
-]
+
 
 export function About() {
   return (
@@ -187,33 +154,7 @@ export function About() {
                   </p>
                 </div>
               </motion.div>
-              
-              <div className="grid grid-cols-2 gap-6">
-                {highlights.map((highlight, index) => {
-                  const Icon = highlight.icon
-                  return (
-                    <motion.div
-                      key={highlight.title}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1, duration: 0.5 }}
-                      viewport={{ once: true }}
-                    >
-                      <Card className="h-full hover:shadow-lg transition-shadow">
-                        <CardContent className="p-6">
-                          <div className="flex flex-col items-center text-center space-y-4">
-                            <div className="p-3 rounded-full bg-primary/10">
-                              <Icon className="h-6 w-6 text-primary" />
-                            </div>
-                            <h4 className="font-semibold mb-2">{highlight.title}</h4>
-                            <p className="text-sm text-muted-foreground">{highlight.description}</p>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </motion.div>
-                  )
-                })}
-              </div>
+
             </div>
           </div>
 

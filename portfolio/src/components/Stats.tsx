@@ -48,15 +48,7 @@ const stats = [
     color: 'text-red-500',
     bgColor: 'bg-red-500/10',
   },
-  {
-    icon: Globe,
-    value: 3,
-    suffix: '',
-    label: 'Countries Served',
-    description: 'Pakistan, International clients',
-    color: 'text-indigo-500',
-    bgColor: 'bg-indigo-500/10',
-  },
+
 ]
 
 interface CounterProps {
