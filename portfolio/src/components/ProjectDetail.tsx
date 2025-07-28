@@ -34,12 +34,15 @@ export function ProjectDetail({ project, onBack }: ProjectDetailProps) {
       }
     }
 
-    // Prevent body scroll
+    // Prevent body scroll and any background scrolling
+    const originalStyle = window.getComputedStyle(document.body).overflow
     document.body.style.overflow = 'hidden'
+    document.documentElement.style.overflow = 'hidden'
     document.addEventListener('keydown', handleEscape)
 
     return () => {
-      document.body.style.overflow = 'unset'
+      document.body.style.overflow = originalStyle
+      document.documentElement.style.overflow = 'unset'
       document.removeEventListener('keydown', handleEscape)
     }
   }, [onBack])
@@ -193,7 +196,7 @@ export function ProjectDetail({ project, onBack }: ProjectDetailProps) {
   const details = getProjectDetails(project.title)
 
   return (
-    <div className="fixed inset-0 z-50 bg-background overflow-y-auto">
+    <div className="fixed inset-0 z-50 bg-background" style={{ overflow: 'hidden' }}>
       {/* Close Button - Fixed Position */}
       <motion.button
         onClick={onBack}
@@ -207,7 +210,8 @@ export function ProjectDetail({ project, onBack }: ProjectDetailProps) {
         <X className="h-5 w-5" />
       </motion.button>
 
-      <div className="container mx-auto px-4 py-8">
+      <div className="h-full overflow-y-auto">
+        <div className="container mx-auto px-4 py-8">
         {/* Back Button */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -520,6 +524,7 @@ export function ProjectDetail({ project, onBack }: ProjectDetailProps) {
             </CardContent>
           </Card>
         </motion.div>
+        </div>
       </div>
     </div>
   )
