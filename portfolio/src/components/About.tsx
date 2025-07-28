@@ -1,34 +1,99 @@
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
+import {
+  // React Icons - Technology specific icons
+  SiReact,
+  SiNextdotjs,
+  SiTypescript,
+  SiFlutter,
+  SiTailwindcss,
+  SiAngular,
+  SiNodedotjs,
+  SiPostgresql,
+  SiSocketdotio,
+  SiMongodb,
+  SiAmazon,
+  SiOpenai,
+  SiGoogle,
+  SiGithub,
+  SiVercel
+} from 'react-icons/si'
+import {
+  // Lucide icons for generic concepts
+  Brain,
+  Eye,
+  Settings,
+  Shield,
+  Layers,
+  Globe
+} from 'lucide-react'
+
+// For now, just use React icon for React & Next.js
+const ReactNextIcon = SiReact
+
+// Technology icon mapping
+const getTechIcon = (techName: string) => {
+  const iconMap: { [key: string]: any } = {
+    // Frontend & Mobile
+    'React & Next.js': ReactNextIcon,
+    'TypeScript': SiTypescript,
+    'Flutter': SiFlutter,
+    'Tailwind CSS': SiTailwindcss,
+    'Angular': SiAngular,
+
+    // Backend & APIs
+    'Node.js & Express': SiNodedotjs,
+    'PostgreSQL': SiPostgresql,
+    'Socket.io': SiSocketdotio,
+    'MongoDB & DynamoDB': SiMongodb,
+    'REST APIs': Globe,
+
+    // AI & Machine Learning
+    'OpenAI Integration': SiOpenai,
+    'Google Gemini': SiGoogle,
+    'Machine Learning': Brain,
+    'OCR & Voice Recognition': Eye,
+    'AI System Design': Settings,
+
+    // Cloud & DevOps
+    'AWS Services': SiAmazon,
+    'Git & GitHub': SiGithub,
+    'Deployment & CI/CD': SiVercel,
+    'Database Design': Layers,
+    'Security Best Practices': Shield,
+  }
+
+  return iconMap[techName] || SiReact
+}
 
 const skillsWithProficiency = {
   frontend: [
-    { name: 'React & Next.js', level: 95, description: 'Expert level - Built multiple production apps' },
-    { name: 'TypeScript', level: 90, description: 'Advanced - Used in all major projects' },
-    { name: 'Flutter', level: 85, description: 'Advanced - UnifyChat mobile app' },
-    { name: 'Tailwind CSS', level: 90, description: 'Advanced - Preferred styling framework' },
-    { name: 'Angular', level: 75, description: 'Proficient - Multiple projects experience' },
+    { name: 'React & Next.js', level: 95, description: 'Expert level - Built multiple production apps', icon: getTechIcon('React & Next.js') },
+    { name: 'TypeScript', level: 90, description: 'Advanced - Used in all major projects', icon: getTechIcon('TypeScript') },
+    { name: 'Flutter', level: 85, description: 'Advanced - UnifyChat mobile app', icon: getTechIcon('Flutter') },
+    { name: 'Tailwind CSS', level: 90, description: 'Advanced - Preferred styling framework', icon: getTechIcon('Tailwind CSS') },
+    { name: 'Angular', level: 75, description: 'Proficient - Multiple projects experience', icon: getTechIcon('Angular') },
   ],
   backend: [
-    { name: 'Node.js & Express', level: 95, description: 'Expert - 4 years experience' },
-    { name: 'PostgreSQL', level: 85, description: 'Advanced - Complex database designs' },
-    { name: 'Socket.io', level: 90, description: 'Advanced - Real-time systems expert' },
-    { name: 'MongoDB & DynamoDB', level: 80, description: 'Proficient - NoSQL databases' },
-    { name: 'REST APIs', level: 95, description: 'Expert - Designed scalable APIs' },
+    { name: 'Node.js & Express', level: 95, description: 'Expert - 4 years experience', icon: getTechIcon('Node.js & Express') },
+    { name: 'PostgreSQL', level: 85, description: 'Advanced - Complex database designs', icon: getTechIcon('PostgreSQL') },
+    { name: 'Socket.io', level: 90, description: 'Advanced - Real-time systems expert', icon: getTechIcon('Socket.io') },
+    { name: 'MongoDB & DynamoDB', level: 80, description: 'Proficient - NoSQL databases', icon: getTechIcon('MongoDB & DynamoDB') },
+    { name: 'REST APIs', level: 95, description: 'Expert - Designed scalable APIs', icon: getTechIcon('REST APIs') },
   ],
   ai: [
-    { name: 'OpenAI Integration', level: 90, description: 'Advanced - NutriVerseAI implementation' },
-    { name: 'Google Gemini', level: 85, description: 'Advanced - Multiple AI features' },
-    { name: 'Machine Learning', level: 80, description: 'Proficient - Timetable optimization' },
-    { name: 'OCR & Voice Recognition', level: 85, description: 'Advanced - Storyworth features' },
-    { name: 'AI System Design', level: 85, description: 'Advanced - End-to-end AI solutions' },
+    { name: 'OpenAI Integration', level: 90, description: 'Advanced - NutriVerseAI implementation', icon: getTechIcon('OpenAI Integration') },
+    { name: 'Google Gemini', level: 85, description: 'Advanced - Multiple AI features', icon: getTechIcon('Google Gemini') },
+    { name: 'Machine Learning', level: 80, description: 'Proficient - Timetable optimization', icon: getTechIcon('Machine Learning') },
+    { name: 'OCR & Voice Recognition', level: 85, description: 'Advanced - Storyworth features', icon: getTechIcon('OCR & Voice Recognition') },
+    { name: 'AI System Design', level: 85, description: 'Advanced - End-to-end AI solutions', icon: getTechIcon('AI System Design') },
   ],
   cloud: [
-    { name: 'AWS Services', level: 80, description: 'Proficient - S3, SES, DynamoDB' },
-    { name: 'Git & GitHub', level: 95, description: 'Expert - Version control mastery' },
-    { name: 'Deployment & CI/CD', level: 85, description: 'Advanced - Vercel, Render experience' },
-    { name: 'Database Design', level: 90, description: 'Advanced - Scalable architectures' },
-    { name: 'Security Best Practices', level: 85, description: 'Advanced - JWT, encryption' },
+    { name: 'AWS Services', level: 80, description: 'Proficient - S3, SES, DynamoDB', icon: getTechIcon('AWS Services') },
+    { name: 'Git & GitHub', level: 95, description: 'Expert - Version control mastery', icon: getTechIcon('Git & GitHub') },
+    { name: 'Deployment & CI/CD', level: 85, description: 'Advanced - Vercel, Render experience', icon: getTechIcon('Deployment & CI/CD') },
+    { name: 'Database Design', level: 90, description: 'Advanced - Scalable architectures', icon: getTechIcon('Database Design') },
+    { name: 'Security Best Practices', level: 85, description: 'Advanced - JWT, encryption', icon: getTechIcon('Security Best Practices') },
   ]
 }
 
@@ -36,10 +101,11 @@ interface SkillBarProps {
   name: string
   level: number
   description: string
+  icon: any
   delay?: number
 }
 
-const SkillBar = ({ name, level, description, delay = 0 }: SkillBarProps) => {
+const SkillBar = ({ name, level, description, icon: Icon, delay = 0 }: SkillBarProps) => {
   const [animatedLevel, setAnimatedLevel] = useState(0)
 
   useEffect(() => {
@@ -57,8 +123,17 @@ const SkillBar = ({ name, level, description, delay = 0 }: SkillBarProps) => {
       transition={{ delay: delay / 1000, duration: 0.5 }}
       viewport={{ once: true }}
     >
-      <div className="flex justify-between items-center mb-2">
-        <h4 className="font-semibold text-sm">{name}</h4>
+      <div className="flex items-center justify-between mb-2">
+        <div className="flex items-center gap-3">
+          <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10 text-primary">
+            {name === 'React & Next.js' ? (
+              <Icon />
+            ) : (
+              <Icon className="h-4 w-4" />
+            )}
+          </div>
+          <h4 className="font-semibold text-sm">{name}</h4>
+        </div>
         <span className="text-sm font-medium text-primary">{level}%</span>
       </div>
       <div className="w-full bg-muted rounded-full h-2 mb-2">
@@ -190,6 +265,7 @@ export function About() {
                         name={skill.name}
                         level={skill.level}
                         description={skill.description}
+                        icon={skill.icon}
                         delay={index * 200 + skillIndex * 100}
                       />
                     ))}
