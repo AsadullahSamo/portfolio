@@ -1,9 +1,152 @@
 import { motion } from 'framer-motion'
-import { ArrowLeft, ExternalLink, Github, Play, Calendar, Users, Code, Zap, Award, CheckCircle, X } from 'lucide-react'
+import { ArrowLeft, ExternalLink, Github, Play, Calendar, Users, Code, Zap, Award, CheckCircle, X, Globe, Brain, Eye, Shield, Smartphone, Monitor, Settings, Database } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
 import { Badge } from './ui/badge'
 import { Button } from './ui/button'
 import { useEffect } from 'react'
+import {
+  // React Icons - Technology specific icons
+  SiReact,
+  SiNextdotjs,
+  SiTypescript,
+  SiFlutter,
+  SiTailwindcss,
+  SiAngular,
+  SiNodedotjs,
+  SiPostgresql,
+  SiSocketdotio,
+  SiMongodb,
+  SiAmazon,
+  SiOpenai,
+  SiGoogle,
+  SiGithub,
+  SiVercel,
+  SiPython,
+  SiJavascript,
+  SiStripe,
+  SiDjango,
+  SiMaterialdesign
+} from 'react-icons/si'
+
+// Technology icon mapping function
+const getTechIcon = (techName: string) => {
+  const iconMap: { [key: string]: any } = {
+    // Frontend & Mobile
+    'React': SiReact,
+    'Next.js': SiNextdotjs,
+    'TypeScript': SiTypescript,
+    'Flutter': SiFlutter,
+    'Tailwind CSS': SiTailwindcss,
+    'Angular': SiAngular,
+    'JavaScript': SiJavascript,
+    'Material Design 3': SiMaterialdesign,
+
+    // Backend & APIs
+    'Node.js': SiNodedotjs,
+    'PostgreSQL': SiPostgresql,
+    'Socket.io': SiSocketdotio,
+    'MongoDB': SiMongodb,
+    'Django': SiDjango,
+    'REST APIs': Globe,
+    'Python': SiPython,
+
+    // AI & Machine Learning
+    'OpenAI': SiOpenai,
+    'Gemini API': SiGoogle,
+    'Google Vision API': SiGoogle,
+    'Whisper API': SiOpenai,
+    'Machine Learning': Brain,
+    'AI Algorithms': Brain,
+    'Constraint Optimization': Settings,
+    'OCR': Eye,
+    'Voice Recognition': Eye,
+
+    // Cloud & DevOps
+    'AWS': SiAmazon,
+    'AWS DynamoDB': SiAmazon,
+    'AWS S3': SiAmazon,
+    'GitHub': SiGithub,
+    'Vercel': SiVercel,
+    'JWT': Shield,
+    'Stripe': SiStripe,
+
+    // Generic fallbacks
+    'Database': Database,
+    'API': Globe,
+    'Security': Shield,
+  }
+
+  return iconMap[techName] || Code
+}
+
+// Get project-specific technology categories
+const getTechCategories = (projectTitle: string) => {
+  switch (projectTitle) {
+    case 'UnifyChat':
+      return [
+        {
+          title: 'Frontend & Mobile',
+          icon: Smartphone,
+          color: 'blue',
+          technologies: ['Flutter', 'Material Design 3', 'TypeScript', 'React', 'Next.js']
+        },
+        {
+          title: 'Backend & Cloud',
+          icon: Database,
+          color: 'green',
+          technologies: ['Node.js', 'Socket.io', 'AWS DynamoDB', 'AWS S3', 'JWT']
+        },
+        {
+          title: 'Cross-platform Support',
+          icon: Monitor,
+          color: 'purple',
+          technologies: ['Flutter', 'Material Design 3']
+        }
+      ]
+    case 'Automated Timetable Generation System':
+      return [
+        {
+          title: 'Frontend',
+          icon: Code,
+          color: 'blue',
+          technologies: ['Next.js', 'Tailwind CSS', 'TypeScript', 'React']
+        },
+        {
+          title: 'Backend & AI',
+          icon: Brain,
+          color: 'green',
+          technologies: ['Django', 'Python', 'AI Algorithms', 'Machine Learning', 'Constraint Optimization']
+        },
+        {
+          title: 'Optimization',
+          icon: Settings,
+          color: 'purple',
+          technologies: ['Constraint Optimization', 'AI Algorithms', 'Machine Learning']
+        }
+      ]
+    default:
+      return [
+        {
+          title: 'Frontend',
+          icon: Code,
+          color: 'blue',
+          technologies: ['React', 'TypeScript', 'Flutter', 'Tailwind CSS', 'Angular', 'Next.js']
+        },
+        {
+          title: 'Backend',
+          icon: Database,
+          color: 'green',
+          technologies: ['Node.js', 'PostgreSQL', 'AWS', 'Socket.io', 'Python', 'JWT', 'Stripe', 'AWS S3', 'Django']
+        },
+        {
+          title: 'AI & Services',
+          icon: Brain,
+          color: 'purple',
+          technologies: ['OpenAI', 'Gemini API', 'Whisper API', 'Google Vision API', 'Machine Learning', 'AI Algorithms']
+        }
+      ]
+  }
+}
 
 interface ProjectDetailProps {
   project: {
@@ -343,11 +486,17 @@ export function ProjectDetail({ project, onBack }: ProjectDetailProps) {
             </CardHeader>
             <CardContent>
               <div className="flex flex-wrap gap-3">
-                {project.technologies.map((tech) => (
-                  <Badge key={tech} variant="outline" className="px-3 py-2 text-sm">
-                    {tech}
-                  </Badge>
-                ))}
+                {project.technologies.map((tech) => {
+                  const IconComponent = getTechIcon(tech)
+                  return (
+                    <Badge key={tech} variant="outline" className="px-3 py-2 text-sm flex items-center gap-2">
+                      <div className="flex items-center justify-center w-4 h-4 text-primary">
+                        <IconComponent className="h-4 w-4" />
+                      </div>
+                      {tech}
+                    </Badge>
+                  )
+                })}
               </div>
             </CardContent>
           </Card>
@@ -479,47 +628,46 @@ export function ProjectDetail({ project, onBack }: ProjectDetailProps) {
             </CardHeader>
             <CardContent>
               <div className="grid md:grid-cols-3 gap-6">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <Code className="h-8 w-8 text-blue-600 dark:text-blue-400" />
-                  </div>
-                  <h4 className="font-semibold mb-2">Frontend</h4>
-                  <div className="flex flex-wrap gap-1 justify-center">
-                    {project.technologies.filter(tech =>
-                      ['React', 'TypeScript', 'Flutter', 'Tailwind CSS', 'Angular', 'Next.js'].includes(tech)
-                    ).map(tech => (
-                      <Badge key={tech} variant="outline" className="text-xs">{tech}</Badge>
-                    ))}
-                  </div>
-                </div>
+                {getTechCategories(project.title).map((category, index) => {
+                  const IconComponent = category.icon
+                  const colorClasses = {
+                    blue: {
+                      bg: 'bg-blue-100 dark:bg-blue-900',
+                      icon: 'text-blue-600 dark:text-blue-400'
+                    },
+                    green: {
+                      bg: 'bg-green-100 dark:bg-green-900',
+                      icon: 'text-green-600 dark:text-green-400'
+                    },
+                    purple: {
+                      bg: 'bg-purple-100 dark:bg-purple-900',
+                      icon: 'text-purple-600 dark:text-purple-400'
+                    }
+                  }
+                  const colors = colorClasses[category.color as keyof typeof colorClasses]
 
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <Zap className="h-8 w-8 text-green-600 dark:text-green-400" />
-                  </div>
-                  <h4 className="font-semibold mb-2">Backend</h4>
-                  <div className="flex flex-wrap gap-1 justify-center">
-                    {project.technologies.filter(tech =>
-                      ['Node.js', 'PostgreSQL', 'AWS', 'Socket.io', 'Python', 'JWT', 'Stripe'].includes(tech)
-                    ).map(tech => (
-                      <Badge key={tech} variant="outline" className="text-xs">{tech}</Badge>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <Award className="h-8 w-8 text-purple-600 dark:text-purple-400" />
-                  </div>
-                  <h4 className="font-semibold mb-2">AI & Services</h4>
-                  <div className="flex flex-wrap gap-1 justify-center">
-                    {project.technologies.filter(tech =>
-                      ['OpenAI', 'Gemini API', 'Whisper API', 'Google Vision API', 'Machine Learning', 'AI Algorithms'].includes(tech)
-                    ).map(tech => (
-                      <Badge key={tech} variant="outline" className="text-xs">{tech}</Badge>
-                    ))}
-                  </div>
-                </div>
+                  return (
+                    <div key={index} className="text-center">
+                      <div className={`w-16 h-16 ${colors.bg} rounded-full flex items-center justify-center mx-auto mb-3`}>
+                        <IconComponent className={`h-8 w-8 ${colors.icon}`} />
+                      </div>
+                      <h4 className="font-semibold mb-2">{category.title}</h4>
+                      <div className="flex flex-wrap gap-1 justify-center">
+                        {project.technologies.filter(tech =>
+                          category.technologies.includes(tech)
+                        ).map(tech => {
+                          const TechIconComponent = getTechIcon(tech)
+                          return (
+                            <Badge key={tech} variant="outline" className="text-xs flex items-center gap-1">
+                              <TechIconComponent className="h-3 w-3" />
+                              {tech}
+                            </Badge>
+                          )
+                        })}
+                      </div>
+                    </div>
+                  )
+                })}
               </div>
             </CardContent>
           </Card>

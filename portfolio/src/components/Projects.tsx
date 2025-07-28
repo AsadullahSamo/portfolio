@@ -33,7 +33,7 @@ const projects = [
     title: 'Automated Timetable Generation System',
     description: 'AI-based FYP project that generates optimized timetables with multiple constraints including cross-semester conflict resolution, practical class scheduling, and teacher availability management.',
     image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=500&h=300&fit=crop&auto=format&q=80',
-    technologies: ['AI Algorithms', 'Constraint Optimization', 'Python', 'Machine Learning', 'Data Analysis'],
+    technologies: ['AI Algorithms', 'Constraint Optimization', 'Python', 'Machine Learning', 'Django', 'Next.js', 'Tailwind CSS'],
     github: 'https://github.com/AsadullahSamo/timetable-generation',
     demo: 'Coming Soon',
     featured: true,
