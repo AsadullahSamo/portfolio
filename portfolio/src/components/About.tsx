@@ -167,7 +167,7 @@ export function About() {
               About <span className="text-primary">Me</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              I'm a passionate software engineer from Karachi, Pakistan, specializing in AI-powered applications
+              I'm a passionate software engineer from Hyderabad, Pakistan, specializing in AI-powered applications
               and enterprise-grade systems. Currently pursuing B.E. in Software Engineering at MUET with academic excellence,
               I've built production applications serving thousands of users worldwide.
             </p>

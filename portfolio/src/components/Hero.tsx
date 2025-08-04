@@ -100,7 +100,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
         >
-          Full Stack Developer specializing in AI-Enhanced Applications
+          Full Stack Developer specializing in creating AI-Powered Applications
         </motion.h2>
 
         {/* Description */}
@@ -110,7 +110,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8 }}
         >
-          Passionate software engineer from Karachi, Pakistan, with 4 years of experience building enterprise-grade applications.
+          Passionate software engineer from Hyderabad, Pakistan, with 4 years of experience building enterprise-grade applications.
           I specialize in AI-powered solutions, real-time systems, and scalable full-stack architectures that serve thousands of users worldwide.
         </motion.p>
 

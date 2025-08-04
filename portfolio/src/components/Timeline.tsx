@@ -275,7 +275,7 @@ export default function Timeline() {
           <div className="bg-card border border-border rounded-xl p-8">
             <div className="flex items-center justify-center mb-4">
               <MapPin className="h-6 w-6 text-primary mr-2" />
-              <h3 className="text-2xl font-bold">Currently Based in Karachi, Pakistan</h3>
+              <h3 className="text-2xl font-bold">Currently Based in Hyderabad, Pakistan</h3>
             </div>
             <p className="text-muted-foreground mb-4">
               Pursuing B.E. in Software Engineering at MUET while building cutting-edge applications 
