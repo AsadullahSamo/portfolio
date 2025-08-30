@@ -1,46 +1,85 @@
-# Getting Started with Create React App
+# Portfolio Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive portfolio website built with React, TypeScript, and Tailwind CSS.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- 🎨 Modern, responsive design
+- 🌙 Dark/Light theme toggle
+- ✨ Smooth animations with Framer Motion
+- 📱 Mobile-first responsive design
+- 🎯 Interactive components and smooth scrolling
+- 📧 **Working contact form with EmailJS integration**
+- 🚀 Optimized performance and SEO
 
-### `npm start`
+## Contact Form
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The contact form is now fully functional and will send actual emails to your inbox (asad.samo549@gmail.com). 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Setup Options
 
-### `npm test`
+1. **EmailJS (Recommended)** - More control, 200 emails/month free
+2. **Formspree** - Simpler setup, 50 submissions/month free
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+See `CONTACT_FORM_SETUP.md` for detailed setup instructions.
 
-### `npm run build`
+### Quick Start
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Choose your preferred solution (EmailJS or Formspree)
+2. Follow the setup guide in `CONTACT_FORM_SETUP.md`
+3. Update the configuration files with your credentials
+4. Test the form - you'll receive emails in your inbox!
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Getting Started
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Set up the contact form (see setup guide above)
+4. Start development server: `npm start`
+5. Build for production: `npm run build`
 
-### `npm run eject`
+## Technologies Used
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- React 19
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- Lucide React Icons
+- EmailJS (for contact form)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Project Structure
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+src/
+├── components/          # React components
+│   ├── Contact.tsx     # EmailJS contact form
+│   ├── ContactFormspree.tsx  # Formspree alternative
+│   └── ui/             # UI components
+├── lib/                # Utilities and config
+│   ├── emailjs-config.ts  # EmailJS configuration
+│   └── test-emailjs.ts    # EmailJS testing utility
+└── ...
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Contact Form Features
 
-## Learn More
+- ✅ Real-time validation
+- ✅ Email format verification
+- ✅ Character count for messages
+- ✅ Loading states and success/error messages
+- ✅ Accessible form design
+- ✅ Mobile-responsive layout
+- ✅ Spam protection
+- ✅ Professional email templates
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Support
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+If you need help setting up the contact form:
+1. Check the setup guides in the documentation
+2. Verify your configuration values
+3. Test with the provided testing utilities
+4. Check your email spam folder
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
