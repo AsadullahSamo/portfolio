@@ -10,7 +10,7 @@ const socialLinks = [
   },
   {
     name: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/asadullah-samo-212680266/',
+    href: 'https://www.linkedin.com/in/asadullah-samoon-212680266/',
     icon: Linkedin,
   },
   {
